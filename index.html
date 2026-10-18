@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BiblioAnimal</title>
+<meta name="description" content="BiblioAnimal : une encyclopédie animalière personnelle, à explorer depuis un globe interactif.">
+<meta name="theme-color" content="#0d2418">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<!-- Globe : cœur de l'expérience -->
+<div id="globeWrap">
+  <div id="globe" aria-label="Globe terrestre interactif"></div>
+  <div id="globeFallback" class="hidden" role="status">Le globe 3D n'a pas pu se charger (connexion ou WebGL indisponible). Tu peux utiliser les continents ci-dessous, la recherche ou la bibliothèque.</div>
+</div>
+
+<header id="topbar">
+  <a class="logo" href="#/" aria-label="BiblioAnimal — retour au globe">
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g fill="currentColor"><ellipse cx="14" cy="28" rx="7" ry="9"/><ellipse cx="27" cy="16" rx="7" ry="10"/><ellipse cx="42" cy="16" rx="7" ry="10"/><ellipse cx="54" cy="28" rx="7" ry="9"/><path d="M32 30c-9 0-18 10-18 19 0 7 6 9 11 8 4-1 5-2 7-2s3 1 7 2c5 1 11-1 11-8 0-9-9-19-18-19z"/></g></svg>
+    <span>BiblioAnimal</span>
+  </a>
+  <div class="search" role="search">
+    <label class="sr" for="search">Rechercher un animal, une famille, un pays ou un mot-clé</label>
+    <input id="search" type="search" placeholder="Rechercher un animal, un pays, un mot-clé…" autocomplete="off" aria-controls="searchResults" aria-expanded="false">
+    <div id="searchResults" class="hidden" role="listbox" aria-label="Résultats de recherche"></div>
+  </div>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="#/bibliotheque">Bibliothèque</a>
+    <a href="#/themes">Thèmes</a>
+    <button type="button" id="btnAdmin" class="btn" aria-pressed="false">✎ Édition</button>
+  </nav>
+</header>
+
+<div id="adminBar" class="hidden" role="region" aria-label="Outils d'édition">
+  <strong>Mode édition</strong>
+  <button type="button" class="btn small primary" data-act="new-animal">+ Nouvelle fiche</button>
+  <a class="btn small" href="#/admin">Administration</a>
+  <button type="button" class="btn small" data-act="export" data-img="1">⬇ Sauvegarder</button>
+  <span class="hint">Les modifications sont enregistrées dans ce navigateur.</span>
+</div>
+
+<div id="continents" class="chips" role="group" aria-label="Continents"></div>
+
+<aside id="drawer" class="drawer hidden" aria-label="Animaux de la région sélectionnée"></aside>
+
+<a id="pawBtn" href="#/bibliotheque" aria-label="Ouvrir toute la bibliothèque animale" title="Toute la bibliothèque">
+  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g fill="currentColor"><ellipse cx="14" cy="28" rx="7" ry="9"/><ellipse cx="27" cy="16" rx="7" ry="10"/><ellipse cx="42" cy="16" rx="7" ry="10"/><ellipse cx="54" cy="28" rx="7" ry="9"/><path d="M32 30c-9 0-18 10-18 19 0 7 6 9 11 8 4-1 5-2 7-2s3 1 7 2c5 1 11-1 11-8 0-9-9-19-18-19z"/></g></svg>
+</a>
+
+<main id="main"><section id="view" class="view hidden" aria-live="polite"></section></main>
+
+<footer id="foot">© BiblioAnimal — ma bibliothèque animalière</footer>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div id="modalBox" class="modal-box"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<noscript><p style="padding:20px;color:#fff">BiblioAnimal a besoin de JavaScript pour fonctionner.</p></noscript>
+
+<script src="https://unpkg.com/globe.gl" onerror="window.__globeMissing=true"></script>
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/globe.js"></script>
+<script src="js/views.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
